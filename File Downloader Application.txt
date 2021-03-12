@@ -1,0 +1,33 @@
+File Downloader Application (Agoda Assignment)
+
+Prerequisite:
+- Java 11 or above
+- Maven 3
+
+Added framework/library:
+- Spring Boot Starter + Test (2.4.3)
+- Apache Common IO (2.6)
+- Apache Common Net (3.6)
+- Apache Common Codec (1.4)
+- Jcraft Jsch (0.1.55)
+
+External service:
+HTTP: speedtest.tele2.net
+FTP: speedtest.tele2.net
+SFTP: test.rebex.net -> SSH required (please see application.yml)
+
+This application supports 3 types of protocol (HTTP, FTP, SFTP) which defined in Protocol enum.
+
+Work flow:
+- Application will get the url to be downloaded from application.yml
+- FileDownloaderService will take an url as a list or string and transform into FileWrapper object
+- Before proceeding the download, each protocol downloader will try to get a file size in byte and update into FileWrapper object
+- If the protocol downloader successfully get the file size from server (if not, exception will be thrown), the program will create a folder regarding destination and remove the existing file with the same name as target url (if exists)
+- The protocol downloader will download the file into input/output stream
+- Once the download process is completed, CommonFileService will try to validate the download result by checking downloaded file MD5 with the prepared MD5 on application configuration
+- If any error occurred during download process (including result validation), the exception will be thrown to FileDownloaderService
+- If any exception was thrown, the program we try to retry the download again with waiting interval (could be changed on application.yml)
+- If the application reached the maximum retry attempt, target URL will be discarded
+
+Note: dryrun mode is enabled by default (please see application.yml)
+Note: prepared MD5 is just to demonstrate how the application validate the downloaded file (expected MD5 should be provided by the target server on production environment)

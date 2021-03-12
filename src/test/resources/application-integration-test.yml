@@ -1,0 +1,45 @@
+environment: integration-test
+dry-run: true
+retry-on-failure-ms: 1000
+retry-attempt-max: 3
+download-list:
+  url:
+    http://speedtest.tele2.net/1MB.zip,
+    ftp://anonymous:test@speedtest.tele2.net/10MB.zip,
+    sftp://demo:password@test.rebex.net/readme.txt
+download-destination:
+  protocol:
+    http: downloaded-test/http
+    ftp: downloaded-test/ftp
+    sftp: downloaded-test/sftp
+protocol:
+  http:
+    timeout-ms: 10000
+  ftp:
+    timeout-ms: 10000
+  sftp:
+    timeout-ms: 10000
+    ssh: /Users/chavanvit/.ssh/known_hosts
+    #  please add this below ssh to known_host file on your local machine
+    #  test.rebex.net ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAkRM6RxDdi3uAGogR3nsQMpmt43X4WnwgMzs8VkwUCqikewxqk4U7EyUSOUeT3CoUNOtywrkNbH83e6/yQgzc3M8i/eDzYtXaNGcKyLfy3Ci6XOwiLLOx1z2AGvvTXln1RXtve+Tn1RTr1BhXVh2cUYbiuVtTWqbEgErT20n4GWD4wv7FhkDbLXNi8DX07F9v7+jH67i0kyGm+E3rE+SaCMRo3zXE6VO+ijcm9HdVxfltQwOYLfuPXM2t5aUSfa96KJcA0I4RCMzA/8Dl9hXGfbWdbD2hK1ZQ1pLvvpNPPyKKjPZcMpOznprbg+jIlsZMWIHt7mq2OJXSdruhRrGzZw==
+file-validation:
+  md5:
+    100KB.zip: 4c6426ac7ef186464ecbb0d81cbfcb1e
+    100MB.zip: 2f282b84e7e608d5852449ed940bfc51
+    10MB.zip: f1c9645dbc14efddc7d8a322685f26eb
+    1KB.zip: 0f343b0931126a20f133d67c2b018a3b
+    1MB.zip: b6d81b360a5672d80c27430f39153e2c
+    200MB.zip: 3566de3a97906edb98d004d6b947ae9b
+    20MB.zip: 8f4e33f3dc3e414ff94e5fb6905cba8c
+    2MB.zip: b2d1236c286a3c0704224fe4105eca49
+    3MB.zip: d1dd210d6b1312cb342b56d02bd5e651
+    500MB.zip: d8b61b2c0025919d5321461045c8226f
+    50MB.zip: 25e317773f308e446cc84c503a6d1f85
+    512KB.zip: 59071590099d21dd439896592338bf95
+    5MB.zip: 5f363e0e58a95f06cbe9bbc662c5dfb6
+    1GB.zip: cd573cfaace07e7949bc0c46028904ff
+    10GB.zip: 2dd26c4d4799ebd29fa31e48d49e8e53
+    50GB.zip: e7f4706922e1edfdb43cd89eb1af606d
+    100GB.zip: 09cd755eb35bc534487a5796d781a856
+    1000GB.zip: 2c9a0f21395470f88f1ded4194979af8
+    readme.txt: d1f2b721bf97a3b6ae0c7975f5a0a11b
