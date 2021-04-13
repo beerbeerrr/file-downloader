@@ -1,5 +1,5 @@
 environment: local
-dry-run: false
+dry-run: true
 retry-on-failure-ms: 1000
 retry-attempt-max: 3
 download-list:
