@@ -1,5 +1,4 @@
-File Downloader Application (Agoda Assignment)
-
+File Downloader Application
 Prerequisite:
 - Java 11 or above
 - Maven 3
